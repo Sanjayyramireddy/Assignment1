@@ -1,0 +1,27 @@
+public class Java3 {
+    public static void main(String[] args) {
+        String input = "The quick brown fox jumps over the lazy dog"; 
+        boolean isPangram = isPangram(input);
+        if (isPangram) {
+            System.out.println("The input is a pangram.");
+        } else {
+            System.out.println("The input is not a pangram.");
+        }
+    }
+    static boolean isPangram(String input) {
+        input = input.toLowerCase();
+        boolean[] alphabetPresent = new boolean[26];
+          for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                int index = c - 'a';
+                alphabetPresent[index] = true;
+            }
+        }
+        for (boolean present : alphabetPresent) {
+            if (!present) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
